@@ -3,7 +3,7 @@
 --       You can create database locally to test it.
 --       Consider add ';' at end sentence.
 
-CREATE TABLE employee(
+CREATE TABLE employee (
     id varchar(10),
     first_name varchar(10) NOT NULL,
     last_name varchar(10) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE employee(
         CONSTRAINT pk_employee_id PRIMARY KEY (id)
 );
 
-CREATE TABLE employee_department(
+CREATE TABLE employee_department (
     id varchar(10),
     name varchar(15) NOT NULL,
     description text NOT NULL,
@@ -34,5 +34,40 @@ INSERT INTO employee VALUES ('E2', 'Ivan', 'Amador', 'D2');
 INSERT INTO employee VALUES ('E3', 'Julio', 'Alvarez', 'D3');
 INSERT INTO employee VALUES ('E4', 'Matias', 'Rangel', 'D4');
 
+
+CREATE TABLE employee_hobby (
+    id varchar(10),
+    name varchar(15) NOT NULL,
+    description text NOT NULL,
+	CONSTRAINT pk_employee_hobby_id PRIMARY KEY (id)
+);
+
+
+CREATE TABLE assign_hobby (
+    id_e varchar(10),
+    id_h varchar(10) 
+);
+
+
+ALTER TABLE assign_hobby
+    ADD CONSTRAINT fk_employee_id2 FOREIGN KEY (id_e) REFERENCES employee(id);
+
+
+ALTER TABLE assign_hobby
+    ADD CONSTRAINT fk_employee_hobby_id FOREIGN KEY (id_h) REFERENCES employee_hobby(id);
+
+
+INSERT INTO employee_hobby VALUES ('H1', 'Videojuegos', 'Juegos electronicos');
+INSERT INTO employee_hobby VALUES ('H2', 'Musica', 'Conjunto de sonidos sucesivos combinados');
+INSERT INTO employee_hobby VALUES ('H3', 'Shopping', 'Acto de ir de compras');
+
+INSERT INTO assign_hobby VALUES ('E1', 'H2');
+INSERT INTO assign_hobby VALUES ('E1', 'H1');
+INSERT INTO assign_hobby VALUES ('E2', 'H3');
+INSERT INTO assign_hobby VALUES ('E2', 'H2');
+INSERT INTO assign_hobby VALUES ('E3', 'H1');
+INSERT INTO assign_hobby VALUES ('E3', 'H3');
+INSERT INTO assign_hobby VALUES ('E4', 'H2');
+INSERT INTO assign_hobby VALUES ('E4', 'H1');
 
 -- ...
