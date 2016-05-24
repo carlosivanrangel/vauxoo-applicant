@@ -8,6 +8,7 @@ CREATE TABLE employee (
     first_name varchar(10) NOT NULL,
     last_name varchar(10) NOT NULL,
     department varchar(10),
+    boss varchar(10), 
         CONSTRAINT pk_employee_id PRIMARY KEY (id)
 );
 
@@ -69,5 +70,15 @@ INSERT INTO assign_hobby VALUES ('E3', 'H1');
 INSERT INTO assign_hobby VALUES ('E3', 'H3');
 INSERT INTO assign_hobby VALUES ('E4', 'H2');
 INSERT INTO assign_hobby VALUES ('E4', 'H1');
+
+
+ALTER TABLE employee
+    ADD CONSTRAINT fk_employee_id3 FOREIGN KEY (boss) REFERENCES employee(id);
+
+UPDATE employee SET boss='E2' WHERE id ='E1';
+UPDATE employee SET boss='E3' WHERE id ='E2';
+UPDATE employee SET boss='E1' WHERE id ='E3';
+UPDATE employee SET boss='E1' WHERE id ='E4';
+
 
 -- ...
