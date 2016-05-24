@@ -1,16 +1,20 @@
 """
-Your module documentation here
+This module calculates the sum of a given list of numbers.
 """
 
 
 class CalculatorClass(object):
     """
-    Your class documentation here
+    This class contains the method to use "sum".
     """
 
     def sum(self, num_list):
         """
-        Your method documentation here
+        This method receives a list of numbers
+        and calculates the sum of them all.
         """
-        # your sum code here
-        return "not implement yet"  # Remove this dummy line
+
+        total = 0  # This variable stores the sum of the numbers
+        for valor in num_list:  # This loop realize the sum of the numbers
+            total += valor  # Stores and adds the numbers
+        return total  # Returns the total of the sum
